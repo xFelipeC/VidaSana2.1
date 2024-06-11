@@ -1,0 +1,29 @@
+form div input,
+form div label,
+form div textarea{
+    width: 60%;
+    font-size: 3vh;
+    margin-top: 10px;
+}
+
+form div label{
+    font-weight: bolder;
+}
+
+form div input{
+    font-size: 3vh;
+}
+
+.mapa{
+    border: solid 1px black;
+    width: 80%;
+    position: relative;
+    left: 10%;
+}
+
+.infoContacto{
+    position: relative;
+    left: 25%;
+    display: flex;
+    gap: 40px;
+}

@@ -17,7 +17,7 @@
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="src/quienessomos.php">Quienes Somos</a></li>
                 <li><a href="#">Consultas Médicas</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="src/contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
                 <button onclick="location.href='#'">Registrarse</button>
