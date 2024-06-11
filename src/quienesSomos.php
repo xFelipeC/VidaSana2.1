@@ -15,7 +15,7 @@
             <ul class="nav-links">
                 <li><a href="../index.php">Inicio</a></li>
                 <li><a href="quienessomos.php">Quienes Somos</a></li>
-                <li><a href="#">Consultas Médicas</a></li>
+                <li><a href="ConsultasMedicas.php">Consultas Médicas</a></li>
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
