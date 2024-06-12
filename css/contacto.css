@@ -27,3 +27,21 @@ form div input{
     display: flex;
     gap: 40px;
 }
+
+/* Asegúrate de ajustar estos estilos a tu preferencia */
+.enviarBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #00796b; /* Color del botón */
+    color: #fff; /* Color del texto */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.enviarBtn:hover {
+    background-color: #005b4f; /* Color del botón al pasar el mouse */
+}

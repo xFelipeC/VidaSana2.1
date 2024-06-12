@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <br>
-                    <input type="submit" class="btn btn-primary pull-right" value="Enviar">
+                    <input type="submit" class="btn btn-primary pull-right" value="Enviar" id="BtnEnviar">
                     <br><br>
                 </div>
             </form>

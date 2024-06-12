@@ -39,6 +39,23 @@ function updateTimeline(stepNumber) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const docType = document.getElementById("docType");
+    const rutLabel = document.querySelector('label[for="rut"]');
+    const rutInput = document.getElementById("rut");
+    const rutHelp = document.getElementById("rutHelp");
+
+    docType.addEventListener("change", function() {
+        if (docType.value === "passport") {
+            rutLabel.textContent = "Pasaporte del Paciente";
+            rutInput.placeholder = "Ej: 87654321";
+            rutHelp.textContent = "Ingrese Pasaporte del paciente";
+        } else {
+            rutLabel.textContent = "RUT del Paciente";
+            rutInput.placeholder = "Ej: 8.765.432-1";
+            rutHelp.textContent = "Ingrese RUT del paciente";
+        }
+    });
+
     // Inicializar con el primer paso visible
     nextStep(1);
 });
