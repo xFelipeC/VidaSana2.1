@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Vida Sana</title>
+    <link rel="shortcut icon" href="../img/logo4.webp" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contacto.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <img src="../img/papagranel.jpg" alt="Vida Sana Logo">
+                <img src="../img/logo4.webp" alt="Vida Sana Logo">
             </div>
             <ul class="nav-links">
                 <li><a href="../index.php">Inicio</a></li>
@@ -27,46 +29,46 @@
     </header>
     <main>
         <section class="about-us">
+        <div class="container mt-5">
+        <div class="formulario">
             <h1>C O N T A C T A N O S</h1>
-
-            <form action="postcontacto.php" method="post">
-                <!-- Formulario -->
+            <form id="contactForm">
                 <div>
-
-                    <div >
+                    <div class="form-group">
                         <label class="control-label">Nombre y Apellido</label>
-                        <div>	
+                        <div>    
                             <input name="name" type="text" class="form-control input-form-contact" placeholder="Ingrese su Nombre y Apellido" required>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">Teléfono</label>
+                        <label class="control-label">Teléfono</label>
                         <div>
                             <input name="phone" type="text" class="form-control input-form-contact" placeholder="Ingrese su número de teléfono" required>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">Correo</label>
+                        <label class="control-label">Correo</label>
                         <div>
                             <input name="email" type="email" class="form-control input-form-contact" placeholder="Ingrese su correo electrónico" required>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">Mensaje</label>
-                        <div >	
+                        <label class="control-label">Mensaje</label>
+                        <div>    
                             <textarea name="message" class="form-control input-form-contact" rows="3" placeholder="Escribe tu mensaje" required></textarea>
                         </div>
                     </div>
                     <br>
-                    <input type="submit" name="submit" class="btn btn-primary pull-right" value="Enviar">
+                    <input type="submit" class="btn btn-primary pull-right" value="Enviar">
                     <br><br>
-
                 </div>
-
             </form>
+            <div id="response"></div>
+        </div>
+    </div>
 
             <div class="services-list">
                 <h2>Ubicanos En:</h2>
@@ -99,5 +101,6 @@
             </div>
         </section>
     </main>
+    <script src="../js/contacto.js"></script>
 </body>
 </html>

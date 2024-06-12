@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quienes Somos - Vida Sana</title>
+    <link rel="shortcut icon" href="../img/logo4.webp" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <img src="../img/papagranel.jpg" alt="Vida Sana Logo">
+                <img src="../img/logo4.webp" alt="Vida Sana Logo">
             </div>
             <ul class="nav-links">
                 <li><a href="../index.php">Inicio</a></li>
