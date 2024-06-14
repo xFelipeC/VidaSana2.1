@@ -63,32 +63,32 @@
                 <div class="service">
                     <i class="fas fa-heartbeat"></i>
                     <h3 style="color: #00796b;">Electrocardiograma (ECG)</h3>
-                    <a href="#">+</a>
+                    <a href="src/Electrocardiograma.php">+</a>
                 </div>
                 <div class="service">
                     <i class="fas fa-stethoscope"></i>
                     <h3 style="color: #00796b;">Holter de presión</h3>
-                    <a href="#">+</a>
+                    <a href="src/Holterdepresion.php">+</a>
                 </div>
                 <div class="service">
                     <i class="fas fa-procedures"></i>
                     <h3 style="color: #00796b;">Holter de Ritmo</h3>
-                    <a href="#">+</a>
+                    <a href="src/HolterdeRitmo.php">+</a>
                 </div>
                 <div class="service">
                     <i class="fas fa-heart"></i>
                     <h3 style="color: #00796b;">Ecocardiograma</h3>
-                    <a href="#">+</a>
+                    <a href="src/Ecocardiograma.php">+</a>
                 </div>
                 <div class="service">
                     <i class="fas fa-running"></i>
                     <h3 style="color: #00796b;">Test de esfuerzo</h3>
-                    <a href="#">+</a>
+                    <a href="src/Testdeesfuerzo.php">+</a>
                 </div>
                 <div class="service">
                     <i class="fas fa-x-ray"></i>
                     <h3 style="color: #00796b;">Endoscopia Digestiva Alta/Baja</h3>
-                    <a href="#">+</a>
+                    <a href="src/EndoscopiaDigestiva.php">+</a>
                 </div>
             </div>
         </section>
