@@ -47,7 +47,7 @@
             </div>
             <!-- Paso 1: Identificar paciente -->
             <div class="step-form" id="step1">
-                <form>
+                <form id="step1Form">
                     <div class="form-group">
                         <label for="docType">Documento de Identificación</label>
                         <select id="docType" class="form-control">
@@ -63,41 +63,109 @@
                     <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
                 </form>
             </div>
-            <!-- Paso 2: Seleccionar servicio -->
+            <!-- Paso 2: Formulario de Registro -->
             <div class="step-form" id="step2" style="display:none;">
-                <h2 class="step-subtitle">Paso 2: Seleccionar servicio</h2>
+                <h2 class="step-subtitle">Paso 2: Registrarse</h2>
+                <div class="container">
+                    <div class="card card-primary" style="max-width: 500px; margin: 40px auto; padding: 20px;">
+                        <div class="card-header" style="background-color: #00796b; color: #ffffff;">
+                            <h3 class="card-title">Registrate</h3>
+                        </div>
+                        <form id="step2Form">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nacionalidad">Nacionalidad</label>
+                                    <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Ingrese su nacionalidad" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="afiliacion">Tipo de Afiliación</label>
+                                    <select class="form-control" id="afiliacion" name="afiliacion" required>
+                                        <option value="fonasa">FONASA</option>
+                                        <option value="isapre">ISAPRE</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(1)">Volver al paso anterior</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(3)">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Paso 3: Seleccionar servicio -->
+            <div class="step-form" id="step3" style="display:none;">
+                <h2 class="step-subtitle">Paso 3: Seleccionar servicio</h2>
                 <h3 class="service-title">Nuestros Servicios</h3>
                 <div class="service-selection">
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-heartbeat"></i>
                         <p>Electrocardiograma (ECG)</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-stethoscope"></i>
                         <p>Holter de presión</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-pulse"></i>
                         <p>Holter de Ritmo</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-heart"></i>
                         <p>Ecocardiograma</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-running"></i>
                         <p>Test de esfuerzo</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-procedures"></i>
                         <p>Endoscopia Digestiva Alta</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(3)">
+                    <div class="service-option" onclick="nextStep(4)">
                         <i class="fas fa-procedures"></i>
                         <p>Endoscopia Digestiva Baja (Colonoscopia)</p>
                     </div>
                 </div>
-                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(1)">Volver al paso anterior</button>
+                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(2)">Volver al paso anterior</button>
+            </div>
+            <!-- Paso 4: Confirmar detalles -->
+            <div class="step-form" id="step4" style="display:none;">
+                <h2 class="step-subtitle">Paso 4: Confirmar detalles</h2>
+                <div class="confirmation-details">
+                    <p><strong>Documento de Identificación:</strong> <span id="confirmDocType"></span></p>
+                    <p><strong>RUT del Paciente:</strong> <span id="confirmRUT"></span></p>
+                    <p><strong>Nombre:</strong> <span id="confirmNombre"></span></p>
+                    <p><strong>Apellido:</strong> <span id="confirmApellido"></span></p>
+                    <p><strong>Fecha de Nacimiento:</strong> <span id="confirmFechaNacimiento"></span></p>
+                    <p><strong>Nacionalidad:</strong> <span id="confirmNacionalidad"></span></p>
+                    <p><strong>Dirección:</strong> <span id="confirmDireccion"></span></p>
+                    <p><strong>Teléfono:</strong> <span id="confirmTelefono"></span></p>
+                    <p><strong>Tipo de Afiliación:</strong> <span id="confirmAfiliacion"></span></p>
+                    <p><strong>Servicio Seleccionado:</strong> <span id="confirmService"></span></p>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Confirmar y Continuar</button>
+                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(3)">Volver al paso anterior</button>
             </div>
             <!-- Otros pasos irían aquí -->
         </section>
