@@ -24,7 +24,7 @@
                 <li><a href="src/contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
-                <button onclick="location.href='#'">Registrarse</button>
+                <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
                 <button onclick="location.href='#'">Iniciar Sesión</button>
             </div>
         </nav>

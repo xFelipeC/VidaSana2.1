@@ -1,39 +1,55 @@
 <?php
 
-    class Database {
-        private $hostname = "localhost";
-        private $database = "";
-        private $username = "root";
-        private $password = "";
-        private $charset = "utf8";
-        
-        function conectar(){
+class ConexionBd{
+    private $direccion;
+    private $usuario;
+    private $contrasena;
+    private $nombreBd;
+    private $conexion;
+    
+    public function __construct($host,$user,$password,$databasename){
+        $this->direccion=$host;
+        $this->usuario=$user;
+        $this->contrasena=$password;
+        $this->nombreBd=$databasename;
 
-            try{
-             
-            $conexion = "mysql:host=" . $this->hostname . "; dbname=" . $this->database . 
-            ", charset=" . $this->charset;
-
-            //agregar a la conexion unas opciones
-            //1.- Para que nos genere excepciones en caso de una falla con la conexion 
-            //2.- Esto es una configuracion para evitar que las preparaciones para validar sea seguro y reales.
-            $option = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_EMULATE_PREPARES => false
-            ];
-
-            $pdo = new PDO($conexion, $this->username, $this->password, $option);
-            
-            //nos trae la conexion con la base de datos
-            return $pdo;
-
-        }   catch(PDOException $e){
-                echo 'Error conexion: ' . $e->getMessage();
-                exit;
-        }
-        
-        }
-        
+        $this->conectarBD();
     }
+
+    private function conectarBD(){
+        try{
+            $dsn="mysql:host={$this->direccion};dbname={$this->nombreBd};charset=utf8";
+            $opciones=[
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ];
+            $this->conexion=new PDO($dsn,$this->usuario,$this->contrasena,$opciones);
+        
+        }catch(PDOException $e){
+            header("Location: src/error/error_tecnico.html");
+            die("Error al conectar a la BD: ".$e->getMessage());
+        }
+     }
+
+    public function obtenerConexion(){
+        return $this->conexion;
+    }
+}
+
+// $direccion="srv25.cpanelhost.cl";
+// $usuario="cca94256_admin";
+// $contrasena="carimu1717";
+// $nombreDB="cca94256_bd_Carimu";
+
+$direccion="localhost";
+$usuario="root";
+$contrasena="";
+$nombreDB="VidaSana";
+
+$conexionDB=new ConexionBd($direccion,$usuario,$contrasena,$nombreDB);
+
+$con=$conexionDB->obtenerConexion();
+
+
 
 ?>
