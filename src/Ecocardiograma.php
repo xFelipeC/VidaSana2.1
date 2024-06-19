@@ -9,7 +9,7 @@
 <body>
     <header>
         <nav>
-        <div class="logo">
+            <div class="logo">
                 <img src="../img/logo4.webp" alt="Vida Sana Logo">
             </div>
             <ul class="nav-links">
@@ -19,18 +19,18 @@
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
-                <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
+                <button onclick="location.href='FormularioRegistrarse.php'">Registrarse</button>
                 <button onclick="location.href='#'">Iniciar Sesión</button>
             </div>
         </nav>
     </header>
     <main>
-        <section class="intro">
+        <section class="about-us">
             <h1>Ecocardiograma</h1>
             <p>El ecocardiograma es una prueba diagnóstica que utiliza ultrasonido para crear imágenes detalladas del corazón, ayudando a evaluar su estructura y función.</p>
             <button id="more-info-btn">Más Información</button>
         </section>
-        <section id="more-info" class="hidden">
+        <section id="more-info" class="services-list hidden">
             <h2>¿Qué es un Ecocardiograma?</h2>
             <p>Un ecocardiograma es una prueba que utiliza ondas de ultrasonido para producir imágenes del corazón. Permite a los médicos observar cómo late el corazón y cómo bombea sangre.</p>
             <h2>¿Cómo se realiza?</h2>
@@ -38,6 +38,7 @@
             <h2>¿Por qué es importante?</h2>
             <p>El ecocardiograma es una herramienta crucial para diagnosticar y monitorear enfermedades cardíacas. Puede detectar problemas en las válvulas cardíacas, en las paredes del corazón y en la capacidad del corazón para bombear sangre.</p>
         </section>
+        <button class="btn-back" onclick="location.href='../index.php'">← Volver a Inicio</button>
     </main>
     <script src="js/scrpit.js"></script>
 </body>

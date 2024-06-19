@@ -35,8 +35,8 @@ function nextStep(stepNumber) {
     // Actualizar la línea de tiempo
     updateTimeline(stepNumber);
 
-    // Si se pasa al paso 4, llenar los detalles de confirmación
-    if (stepNumber === 4) {
+    // Si se pasa al paso 5, llenar los detalles de confirmación
+    if (stepNumber === 5) {
         document.getElementById('confirmDocType').innerText = document.getElementById('docType').value;
         document.getElementById('confirmRUT').innerText = document.getElementById('rut').value;
         document.getElementById('confirmNombre').innerText = document.getElementById('nombre').value;
@@ -48,8 +48,11 @@ function nextStep(stepNumber) {
         document.getElementById('confirmAfiliacion').innerText = document.getElementById('afiliacion').value;
 
         // Obtener el servicio seleccionado
-        const selectedService = document.querySelector('.service-option.active p').innerText;
-        document.getElementById('confirmService').innerText = selectedService;
+        document.getElementById('confirmService').innerText = localStorage.getItem('selectedService');
+
+        // Obtener la fecha y hora seleccionadas
+        document.getElementById('confirmDate').innerText = localStorage.getItem('selectedDate');
+        document.getElementById('confirmTime').innerText = localStorage.getItem('selectedTime');
     }
 }
 
@@ -91,6 +94,9 @@ function submitForm() {
     const direccion = document.getElementById('direccion').value;
     const telefono = document.getElementById('telefono').value;
     const afiliacion = document.getElementById('afiliacion').value;
+    const servicio = localStorage.getItem('selectedService');
+    const fecha = localStorage.getItem('selectedDate');
+    const hora = localStorage.getItem('selectedTime');
 
     // Crear un objeto con los datos del formulario
     const data = {
@@ -101,7 +107,10 @@ function submitForm() {
         nacionalidad: nacionalidad,
         direccion: direccion,
         telefono: telefono,
-        afiliacion: afiliacion
+        afiliacion: afiliacion,
+        servicio: servicio,
+        fecha: fecha,
+        hora: hora
     };
 
     // Enviar los datos a través de una solicitud AJAX
@@ -138,3 +147,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function selectService(service) {
+    localStorage.setItem('selectedService', service);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridWeek',  // Mostrar solo vista de semana
+        locale: 'es',
+        height: 'auto',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: ''  // Ocultar otras vistas
+        },
+        contentHeight: 'auto',
+        dateClick: function(info) {
+            var selectedDate = info.dateStr;
+            alert('Fecha seleccionada: ' + selectedDate);
+            localStorage.setItem('selectedDate', selectedDate);
+            // Aquí puedes realizar alguna acción con la fecha seleccionada, por ejemplo:
+            document.querySelectorAll('.fc-daygrid-day').forEach(day => day.style.backgroundColor = '');  // Restablecer colores
+            info.dayEl.style.backgroundColor = '#00796b';  // Cambiar color del día seleccionado
+            mostrarHorasDisponibles(selectedDate);  // Mostrar horas disponibles para la fecha seleccionada
+        }
+    });
+    calendar.render();
+});
+
+function mostrarHorasDisponibles(fecha) {
+    const horasDisponibles = [
+        "10:45", "11:00", "11:15", "11:30", "11:45"
+    ];
+
+    const contenedorHoras = document.getElementById('horasDisponibles');
+    contenedorHoras.innerHTML = '';  // Limpiar contenido previo
+
+    const card = document.createElement('div');
+    card.className = 'hora-card';
+    card.innerHTML = `
+        <div class="doctor-info">
+            <img src="../img/doctorVidaSana1.png" alt="Doctor" style="width: 80px; height: auto;">
+            <div class="doctor-details">
+                <p>Javier Fernández</p>
+                <p>Traumatología Adulto</p>
+            </div>
+        </div>
+        <div class="horas">
+            ${horasDisponibles.map(hora => `<button class="hora-button" onclick="seleccionarHora('${hora}')">${hora}</button>`).join('')}
+        </div>
+        <button class="btn btn-info">Ver más horas disponible</button>
+    `;
+
+    contenedorHoras.appendChild(card);
+}
+
+function seleccionarHora(hora) {
+    alert('Hora seleccionada: ' + hora);
+    localStorage.setItem('selectedTime', hora);
+}

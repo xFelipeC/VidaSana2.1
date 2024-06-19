@@ -9,7 +9,7 @@
 <body>
     <header>
         <nav>
-        <div class="logo">
+            <div class="logo">
                 <img src="../img/logo4.webp" alt="Vida Sana Logo">
             </div>
             <ul class="nav-links">
@@ -19,18 +19,18 @@
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
-                <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
+                <button onclick="location.href='FormularioRegistrarse.php'">Registrarse</button>
                 <button onclick="location.href='#'">Iniciar Sesión</button>
             </div>
         </nav>
     </header>
     <main>
-        <section class="intro">
+        <section class="about-us">
             <h1>Test de Esfuerzo</h1>
             <p>El test de esfuerzo es una prueba diagnóstica que evalúa la respuesta del corazón al ejercicio físico, ayudando a detectar enfermedades cardíacas.</p>
             <button id="more-info-btn">Más Información</button>
         </section>
-        <section id="more-info" class="hidden">
+        <section id="more-info" class="services-list hidden">
             <h2>¿Qué es un Test de Esfuerzo?</h2>
             <p>El test de esfuerzo, también conocido como prueba de esfuerzo o ergometría, es una prueba que mide la capacidad del corazón para responder al estrés físico en un entorno clínico controlado.</p>
             <h2>¿Cómo se realiza?</h2>
@@ -38,6 +38,7 @@
             <h2>¿Por qué es importante?</h2>
             <p>El test de esfuerzo ayuda a identificar problemas cardíacos que no son visibles en reposo. Es útil para diagnosticar enfermedades coronarias, evaluar la eficacia del tratamiento cardíaco y determinar niveles seguros de ejercicio para pacientes con problemas cardíacos.</p>
         </section>
+        <button class="btn-back" onclick="location.href='../index.php'">← Volver a Inicio</button>
     </main>
     <script src="js/scrpit.js"></script>
 </body>

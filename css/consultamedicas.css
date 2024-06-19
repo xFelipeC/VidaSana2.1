@@ -1,0 +1,109 @@
+/* General styles */
+.step-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.step-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.step-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.step {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.line {
+    height: 4px;
+    background-color: #f1f1f1;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.step.active {
+    background-color: #00796b;
+    color: white;
+}
+
+.step.completed {
+    background-color: #4caf50;
+    color: white;
+}
+
+.line.active {
+    background-color: #4caf50;
+}
+
+.step-form {
+    display: none;
+}
+
+.step-form.active {
+    display: block;
+}
+
+.doctor-info {
+    display: flex;
+    align-items: center;
+}
+
+.doctor-img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.doctor-details p {
+    margin: 0;
+}
+
+.hora-card {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.horas {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hora-button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hora-button:hover {
+    background-color: #005b4f;
+}

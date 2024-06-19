@@ -8,9 +8,56 @@
     <link rel="stylesheet" href="../css/consultasMedicas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <style>
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .doctor-info img {
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .doctor-details p {
+            margin: 0;
+        }
+        .hora-card {
+            border: 1px solid #00796b;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .hora-button {
+            margin: 5px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hora-button:hover {
+            background-color: #005f56;
+        }
+        .btn-info {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-info:hover {
+            background-color: #005f56;
+        }
+    </style>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
 
     <header>
         <nav>
@@ -118,40 +165,50 @@
                 <h2 class="step-subtitle">Paso 3: Seleccionar servicio</h2>
                 <h3 class="service-title">Nuestros Servicios</h3>
                 <div class="service-selection">
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Electrocardiograma (ECG)'); nextStep(4);">
                         <i class="fas fa-heartbeat"></i>
                         <p>Electrocardiograma (ECG)</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Holter de presión'); nextStep(4);">
                         <i class="fas fa-stethoscope"></i>
                         <p>Holter de presión</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Holter de Ritmo'); nextStep(4);">
                         <i class="fas fa-pulse"></i>
                         <p>Holter de Ritmo</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Ecocardiograma'); nextStep(4);">
                         <i class="fas fa-heart"></i>
                         <p>Ecocardiograma</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Test de esfuerzo'); nextStep(4);">
                         <i class="fas fa-running"></i>
                         <p>Test de esfuerzo</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Endoscopia Digestiva Alta'); nextStep(4);">
                         <i class="fas fa-procedures"></i>
                         <p>Endoscopia Digestiva Alta</p>
                     </div>
-                    <div class="service-option" onclick="nextStep(4)">
+                    <div class="service-option" onclick="selectService('Endoscopia Digestiva Baja (Colonoscopia)'); nextStep(4);">
                         <i class="fas fa-procedures"></i>
                         <p>Endoscopia Digestiva Baja (Colonoscopia)</p>
                     </div>
                 </div>
                 <button type="button" class="btn btn-secondary back-button" onclick="prevStep(2)">Volver al paso anterior</button>
             </div>
-            <!-- Paso 4: Confirmar detalles -->
+            <!-- Paso 4: Calendario -->
             <div class="step-form" id="step4" style="display:none;">
-                <h2 class="step-subtitle">Paso 4: Confirmar detalles</h2>
+                <h2 class="step-subtitle">Paso 4: Seleccionar día y hora</h2>
+                <div id='calendar'></div>
+                <div id="horasDisponibles"></div>
+                <input type="hidden" id="selectedDate">
+                <input type="hidden" id="selectedTime">
+                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(3)">Volver al paso anterior</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(5)">Continuar</button>
+            </div>
+            <!-- Paso 5: Confirmar detalles -->
+            <div class="step-form" id="step5" style="display:none;">
+                <h2 class="step-subtitle">Paso 5: Confirmar detalles</h2>
                 <div class="confirmation-details">
                     <p><strong>Documento de Identificación:</strong> <span id="confirmDocType"></span></p>
                     <p><strong>RUT del Paciente:</strong> <span id="confirmRUT"></span></p>
@@ -163,11 +220,12 @@
                     <p><strong>Teléfono:</strong> <span id="confirmTelefono"></span></p>
                     <p><strong>Tipo de Afiliación:</strong> <span id="confirmAfiliacion"></span></p>
                     <p><strong>Servicio Seleccionado:</strong> <span id="confirmService"></span></p>
+                    <p><strong>Fecha:</strong> <span id="confirmDate"></span></p>
+                    <p><strong>Hora:</strong> <span id="confirmTime"></span></p>
                 </div>
                 <button type="button" class="btn btn-primary" onclick="submitForm()">Confirmar y Continuar</button>
-                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(3)">Volver al paso anterior</button>
+                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(4)">Volver al paso anterior</button>
             </div>
-            <!-- Otros pasos irían aquí -->
         </section>
     </main>
     <script src="../js/consultas.js"></script>
