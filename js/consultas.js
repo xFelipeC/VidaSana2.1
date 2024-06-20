@@ -1,12 +1,92 @@
+function validarDigitoVerificador(rut) {
+    const cuerpo = rut.slice(0, -1);
+    let dv = rut.slice(-1).toUpperCase();
+
+    let suma = 0;
+    let multiplo = 2;
+
+    // Itera desde el final hacia el inicio del cuerpo del RUT
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+        suma += multiplo * parseInt(cuerpo[i]);
+        multiplo = multiplo === 7 ? 2 : multiplo + 1;
+    }
+
+    const dvEsperado = 11 - (suma % 11);
+    if (dvEsperado === 11) dvEsperado = 0;
+    else if (dvEsperado === 10) dvEsperado = 'K';
+
+    return dv.toString() === dvEsperado.toString();
+}
+
+function formatearYVerificarRut(rut) {
+    // Elimina todos los caracteres no numéricos o la letra 'k'/'K'
+    const rutLimpio = rut.replace(/[^0-9kK]/g, '').toUpperCase();
+    
+    // Verifica que el RUT tenga al menos 2 caracteres (mínimo 1 dígito y 1 dígito verificador)
+    if (rutLimpio.length < 2) {
+        return "RUT inválido";
+    }
+    
+    // Verifica si el dígito verificador es correcto
+    if (!validarDigitoVerificador(rutLimpio)) {
+        return "RUT inválido";
+    }
+    
+    // Separa el cuerpo del RUT (todos los números excepto el último dígito) y el dígito verificador (último dígito)
+    const cuerpo = rutLimpio.slice(0, -1);
+    const digitoVerificador = rutLimpio.slice(-1);
+    
+    // Añade puntos cada tres dígitos, comenzando desde el final del cuerpo del RUT
+    const cuerpoFormateado = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    
+    // Retorna el RUT formateado con el cuerpo y el dígito verificador separados por un guion
+    return cuerpoFormateado + '-' + digitoVerificador;
+}
+
+function validarRut(rut) {
+    if (rut.length < 7) return false;
+    const rutLimpio = rut.replace(/[^0-9kK]/g, '').toUpperCase();
+    const cuerpo = rutLimpio.slice(0, -1);
+    const digitoVerificador = rutLimpio.slice(-1);
+    let suma = 0;
+    let multiplicador = 2;
+
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+        suma += parseInt(cuerpo[i]) * multiplicador;
+        multiplicador = multiplicador < 7 ? multiplicador + 1 : 2;
+    }
+
+    const dvEsperado = 11 - (suma % 11);
+    let dv = dvEsperado === 11 ? '0' : dvEsperado === 10 ? 'K' : dvEsperado.toString();
+
+    return dv === digitoVerificador;
+}
+
+function formatearRut(rut) {
+    const rutLimpio = rut.replace(/[^0-9kK]/g, '').toUpperCase();
+    const cuerpo = rutLimpio.slice(0, -1);
+    const digitoVerificador = rutLimpio.slice(-1);
+    return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + digitoVerificador;
+}
+
 function nextStep(stepNumber) {
     // Validar los campos antes de permitir avanzar
     if (stepNumber === 2) {
         // Validar los campos del paso 1
-        const rut = document.getElementById('rut').value;
+        const rutInput = document.getElementById('rut');
+        const rut = rutInput.value;
+
         if (!rut) {
             alert('Por favor, ingrese el RUT.');
             return;
         }
+
+        if (!validarRut(rut)) {
+            alert('Por favor, ingrese un RUT válido.');
+            return;
+        }
+
+        rutInput.value = formatearYVerificarRut(rut);
     }
 
     if (stepNumber === 3) {

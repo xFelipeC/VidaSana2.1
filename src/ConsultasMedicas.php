@@ -103,8 +103,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="rut">RUT del Paciente</label>
-                        <input type="text" id="rut" class="form-control" placeholder="Ej: 8.765.432-1">
+                        <label for="rut">RUT del Paciente (Sin puntos ni guion)</label>
+                        <input type="text" id="rut" class="form-control" placeholder="Ej: 987654321">
                         <small id="rutHelp" class="form-text text-muted">Ingrese RUT del paciente</small>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
