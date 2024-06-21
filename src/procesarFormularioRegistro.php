@@ -23,6 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario = "root";
             $contrasena = "";
             $nombreDB = "VidaSana";
+            // $direccion="localhost";
+            // $usuario="id22346718_vidasana";
+            // $contrasena="vidaSana777*";
+            // $nombreDB="id22346718_vidasana";
             $conexionDB = new ConexionBd($dbDireccion, $usuario, $contrasena, $nombreDB);
             $con = $conexionDB->obtenerConexion();
 

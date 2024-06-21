@@ -41,12 +41,18 @@ class ConexionBd{
 // $contrasena="carimu1717";
 // $nombreDB="cca94256_bd_Carimu";
 
-$direccion="localhost";
-$usuario="root";
-$contrasena="";
-$nombreDB="VidaSana";
+$dbDireccion = "localhost";
+$usuario = "root";
+$contrasena = "";
+$nombreDB = "VidaSana";
 
-$conexionDB=new ConexionBd($direccion,$usuario,$contrasena,$nombreDB);
+// $direccion="localhost";
+// $usuario="id22346718_vidasana";
+// $contrasena="vidaSana777*";
+// $nombreDB="id22346718_vidasana";
+
+// $conexionDB=new ConexionBd($direccion,$usuario,$contrasena,$nombreDB);
+$conexionDB=new ConexionBd($dbDireccion,$usuario,$contrasena,$nombreDB);
 
 $con=$conexionDB->obtenerConexion();
 

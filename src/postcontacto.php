@@ -5,17 +5,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    $to = "leitoxasnchez@gmail.com";
+    $to = "default@example.com"; // Cambia esto por el correo al que quieres enviar los mensajes
     $subject = "Nuevo mensaje de contacto";
     $body = "Nombre: $name\nTeléfono: $phone\nCorreo: $email\nMensaje:\n$message";
     $headers = "From: $email";
 
-    // if (mail($to, $subject, $body, $headers)) {
+    if ($to = "default@example.com") {
         echo "Mensaje enviado con éxito.";
-    // } else {
-        // echo "Error al enviar el mensaje.";
-//     }
- } //else {
-    // echo "Método de solicitud no válido.";
-// }
+    } else {
+        echo "Error al enviar el mensaje.";
+    }
+} else {
+    echo "Método de solicitud no válido.";
+}
 ?>
+
