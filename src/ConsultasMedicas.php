@@ -103,8 +103,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="rut">RUT del Paciente (Sin puntos ni guion)</label>
-                        <input type="text" id="rut" class="form-control" placeholder="Ej: 987654321">
+                        <label for="rut">RUT del Paciente (Con puntos y guion)</label>
+                        <input type="text" id="rut" class="form-control" placeholder="Ej: 11.222.333-4">
                         <small id="rutHelp" class="form-text text-muted">Ingrese RUT del paciente</small>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
@@ -153,8 +153,10 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(1)">Volver al paso anterior</button>
+                            <form action="procesarFormularioRegistro.php" method="post"> 
+                                <button type="submit" class="btn btn-secondary back-button" >Volver al paso anterior</button>
                                 <button type="button" class="btn btn-primary" onclick="nextStep(3)">Registrar</button>
+                            </form>
                             </div>
                         </form>
                     </div>

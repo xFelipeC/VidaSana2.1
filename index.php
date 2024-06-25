@@ -26,6 +26,7 @@
             <div class="nav-buttons">
                 <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
                 <button onclick="location.href='src/login.php'">Iniciar Sesión</button>
+                <button onclick="location.href='src/ConsultaCita.php'">Consultar Cita</button>
             </div>
         </nav>
     </header>
