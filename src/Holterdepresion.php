@@ -20,7 +20,7 @@
 
         <nav>
             <div class="logo">
-                <img src="../img/logo4.webp" alt="Vida Sana Logo">
+                <a href="../index.php"><img src="../img/logo4.webp" alt="Vida Sana Logo"></a>
             </div>
             <ul class="nav-links">
                 <li><a href="../index.php">Inicio</a></li>

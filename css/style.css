@@ -440,3 +440,76 @@ nav {
     font-size: 18px;
     line-height: 1.6;
 }
+
+footer {
+    background-color: #00796b;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .footer-section {
+    flex: 1;
+    padding: 10px;
+    min-width: 250px;
+}
+
+footer .footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+footer .footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .footer-section ul li {
+    margin-bottom: 10px;
+}
+
+footer .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer .footer-section ul li a:hover {
+    color: #ffd54f;
+}
+
+footer .footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #ffd54f;
+}
+
+footer .footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+}
+

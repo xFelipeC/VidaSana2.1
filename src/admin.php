@@ -26,7 +26,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="../img/logo4.webp" alt="Vida Sana Logo">
+                <a href="../index.php"><img src="../img/logo4.webp" alt="Vida Sana Logo"></a>
             </div>
             <ul class="nav-links">
                 <li><a href="../index.php">Inicio</a></li>
@@ -39,10 +39,20 @@
     <main>
         <section class="about-us">
         <div class="container mt-5">
-        <h1>Bienvenido Doctor:</h1>
-        <p><b><?php echo $userName ?></b></p>
-    </div>
-
+            <h1>Bienvenido Doctor:</h1>
+            <p><b><?php echo $userName ?></b></p>
+        </div>
+        <div>
+            <p>¿Que desea Hacer?</p>
+        </div>
+        <div class="reportes">
+            <ul>
+                <li><a href="reportePacientes.php">Reporte de Pacientes Agendados y Atendidos</a></li>
+                <li><a href="reporteDescuentos.php">Reporte de Atenciones con Descuento</a></li>
+                <li><a href="reporteAfiliacion.php">Reporte de Afiliación por Especialidad</a></li>
+                <li><a href="reporteAtenciones.php">Reporte de Atenciones por Tipo de Afiliación</a></li>
+             </ul>
+        </div>
         </section>
     </main>
 </body>
