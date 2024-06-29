@@ -94,7 +94,7 @@
             </div>
             <!-- Paso 1: Identificar paciente -->
             <div class="step-form" id="step1">
-                <form id="step1Form">
+                <!-- <form id="step1Form" action="guardarDatosConsulta.php" method="post" > -->
                     <div class="form-group">
                         <label for="docType">Documento de Identificación</label>
                         <select id="docType" class="form-control">
@@ -108,7 +108,7 @@
                         <small id="rutHelp" class="form-text text-muted">Ingrese RUT del paciente</small>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
-                </form>
+                <!-- </form> -->
             </div>
             <!-- Paso 2: Formulario de Registro -->
             <div class="step-form" id="step2" style="display:none;">
@@ -118,7 +118,7 @@
                         <div class="card-header" style="background-color: #00796b; color: #ffffff;">
                             <h3 class="card-title">Registrate</h3>
                         </div>
-                        <form id="step2Form">
+                        <!-- <form id="step2Form"> -->
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
@@ -153,17 +153,18 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                            <form action="procesarFormularioRegistro.php" method="post"> 
+                            <!-- <form action="procesarFormularioRegistro.php" method="post">  -->
                                 <button type="submit" class="btn btn-secondary back-button" >Volver al paso anterior</button>
                                 <button type="button" class="btn btn-primary" onclick="nextStep(3)">Registrar</button>
-                            </form>
+                            <!-- </form> -->
                             </div>
-                        </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>
             <!-- Paso 3: Seleccionar servicio -->
-            <div class="step-form" id="step3" style="display:none;">
+            <!-- <form id="step3Form"> -->
+                <div class="step-form" id="step3" style="display:none;">
                 <h2 class="step-subtitle">Paso 3: Seleccionar servicio</h2>
                 <h3 class="service-title">Nuestros Servicios</h3>
                 <div class="service-selection">
@@ -198,6 +199,7 @@
                 </div>
                 <button type="button" class="btn btn-secondary back-button" onclick="prevStep(2)">Volver al paso anterior</button>
             </div>
+            <!-- </form> -->
             <!-- Paso 4: Calendario -->
             <div class="step-form" id="step4" style="display:none;">
                 <h2 class="step-subtitle">Paso 4: Seleccionar día y hora</h2>
@@ -209,9 +211,11 @@
                 <button type="button" class="btn btn-primary" onclick="nextStep(5)">Continuar</button>
             </div>
             <!-- Paso 5: Confirmar detalles -->
-            <div class="step-form" id="step5" style="display:none;">
-                <h2 class="step-subtitle">Paso 5: Confirmar detalles</h2>
-                <div class="confirmation-details">
+            
+                <div class="step-form" id="step5" style="display:none;">
+                    <h2 class="step-subtitle">Paso 5: Confirmar detalles</h2>
+                    <div class="confirmation-details">
+                    <!-- <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre"> -->
                     <p><strong>Documento de Identificación:</strong> <span id="confirmDocType"></span></p>
                     <p><strong>RUT del Paciente:</strong> <span id="confirmRUT"></span></p>
                     <p><strong>Nombre:</strong> <span id="confirmNombre"></span></p>
@@ -224,12 +228,46 @@
                     <p><strong>Servicio Seleccionado:</strong> <span id="confirmService"></span></p>
                     <p><strong>Fecha:</strong> <span id="confirmDate"></span></p>
                     <p><strong>Hora:</strong> <span id="confirmTime"></span></p>
+                    <!-- <input type="hidden" id="confirmDocType" name="confirmDocType">
+                    <input type="hidden" id="confirmRUT" name="confirmRUT">
+                    <input type="hidden" id="confirmNombre" name="confirmNombre">
+                    <input type="text" id="confirmApellido" name="confirmApellido">
+                    <input type="hidden" id="confirmFechaNacimiento" name="confirmFechaNacimiento">
+                    <input type="hidden" id="confirmNacionalidad" name="confirmNacionalidad">
+                    <input type="hidden" id="confirmDireccion" name="confirmDireccion">
+                    <input type="hidden" id="confirmTelefono" name="confirmTelefono">
+                    <input type="hidden" id="confirmAfiliacion" name="confirmAfiliacion">
+                    <input type="hidden" id="confirmService" name="confirmService">
+                    <input type="hidden" id="confirmDate" name="confirmDate">
+                    <input type="hidden" id="confirmTime" name="confirmTime"> -->
+                    <form role="form "id="step5Form" action="guardarDatosConsulta.php" method="post" onsubmit="copiarValoresASpan();">
+                    <input type="hidden" id="inputDocType" name="confirmDocType">
+                    <input type="hidden" id="inputRUT" name="confirmRUT">
+                    <input type="hidden" id="inputNombre" name="confirmNombre">
+                    <input type="hidden" id="inputApellido" name="confirmApellido">
+                    <input type="hidden" id="inputFechaNacimiento" name="confirmFechaNacimiento">
+                    <input type="hidden" id="inputNacionalidad" name="confirmNacionalidad">
+                    <input type="hidden" id="inputDireccion" name="confirmDireccion">
+                    <input type="hidden" id="inputTelefono" name="confirmTelefono">
+                    <input type="hidden" id="inputAfiliacion" name="confirmAfiliacion">
+                    <input type="hidden" id="inputService" name="confirmService">
+                    <input type="hidden" id="inputDate" name="confirmDate">
+                    <input type="hidden" id="inputTime" name="confirmTime">
+
+                    <!-- <input type="time" name="" id="">
+                    <input type="date" name="" id=""> -->
+                    </div>
+                    <!-- <button type="button" class="btn btn-primary" onclick="submitForm()">Confirmar y Continuar</button>
+                    <button type="button" class="btn btn-secondary back-button" onclick="prevStep(4)">Volver al paso anterior</button> -->
+                    <input type="submit" class="btn btn-primary" value="Confirmar y Continuar">
+                    <input type="Button" class="btn btn-secondary back-button" onclick="prevStep(4)" value="Volver al paso anterior">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="submitForm()">Confirmar y Continuar</button>
-                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(4)">Volver al paso anterior</button>
-            </div>
+                
+            </form>
         </section>
     </main>
     <script src="../js/consultas.js"></script>
+
 </body>
 </html>
+<input type="submit" name="Login" value="Login" >

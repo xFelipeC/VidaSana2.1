@@ -15,7 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $direccion = $input['direccion'];
     $telefono = $input['telefono'];
     $afiliacion = $input['afiliacion'];
-
+    $servicio = $input['selectedService']
+    $fecha = $input['selectedDate']
+    $hora = $input['selectedTime']
+    
     // Verifica que todos los campos estén completos
     if ($nombre && $apellido && $rut && $nacionalidad && $direccion && $fecha_nacimiento && $telefono && $afiliacion) {
         try {

@@ -117,6 +117,7 @@ function nextStep(stepNumber) {
 
     // Si se pasa al paso 5, llenar los detalles de confirmación
     if (stepNumber === 5) {
+
         document.getElementById('confirmDocType').innerText = document.getElementById('docType').value;
         document.getElementById('confirmRUT').innerText = document.getElementById('rut').value;
         document.getElementById('confirmNombre').innerText = document.getElementById('nombre').value;
@@ -133,6 +134,23 @@ function nextStep(stepNumber) {
         // Obtener la fecha y hora seleccionadas
         document.getElementById('confirmDate').innerText = localStorage.getItem('selectedDate');
         document.getElementById('confirmTime').innerText = localStorage.getItem('selectedTime');
+
+        //prueba
+        // Copiar los valores de los span a los campos input
+        document.getElementById('inputDocType').value = document.getElementById('confirmDocType').innerText;
+        document.getElementById('inputRUT').value = document.getElementById('confirmRUT').innerText;
+        document.getElementById('inputNombre').value = document.getElementById('confirmNombre').innerText;
+        document.getElementById('inputApellido').value = document.getElementById('confirmApellido').innerText;
+        document.getElementById('inputFechaNacimiento').value = document.getElementById('confirmFechaNacimiento').innerText;
+        document.getElementById('inputNacionalidad').value = document.getElementById('confirmNacionalidad').innerText;
+        document.getElementById('inputDireccion').value = document.getElementById('confirmDireccion').innerText;
+        document.getElementById('inputTelefono').value = document.getElementById('confirmTelefono').innerText;
+        document.getElementById('inputAfiliacion').value = document.getElementById('confirmAfiliacion').innerText;
+        document.getElementById('inputService').value = document.getElementById('confirmService').innerText;
+        document.getElementById('inputDate').value = document.getElementById('confirmDate').innerText;
+        document.getElementById('inputTime').value = document.getElementById('confirmTime').innerText;
+
+
     }
 }
 
@@ -194,7 +212,8 @@ function submitForm() {
     };
 
     // Enviar los datos a través de una solicitud AJAX
-    fetch('procesarFormularioRegistro.php', {
+    // fetch('procesarFormularioRegistro.php', {
+        fetch('guardarDatosConsulta.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -287,4 +306,21 @@ function mostrarHorasDisponibles(fecha) {
 function seleccionarHora(hora) {
     alert('Hora seleccionada: ' + hora);
     localStorage.setItem('selectedTime', hora);
+}
+
+function copiarValoresASpan() {
+    // console.log("Copiando valores de span a inputs.");
+    document.getElementById('inputDocType').value = document.getElementById('confirmDocType').innerText;
+    document.getElementById('inputRUT').value = document.getElementById('confirmRUT').innerText;
+    document.getElementById('inputNombre').value = document.getElementById('confirmNombre').innerText;
+    document.getElementById('inputApellido').value = document.getElementById('confirmApellido').innerText;
+    document.getElementById('inputFechaNacimiento').value = document.getElementById('confirmFechaNacimiento').innerText;
+    document.getElementById('inputNacionalidad').value = document.getElementById('confirmNacionalidad').innerText;
+    document.getElementById('inputDireccion').value = document.getElementById('confirmDireccion').innerText;
+    document.getElementById('inputTelefono').value = document.getElementById('confirmTelefono').innerText;
+    document.getElementById('inputAfiliacion').value = document.getElementById('confirmAfiliacion').innerText;
+    document.getElementById('inputService').value = document.getElementById('confirmService').innerText;
+    document.getElementById('inputDate').value = document.getElementById('confirmDate').innerText;
+    document.getElementById('inputTime').value = document.getElementById('confirmTime').innerText;
+
 }
