@@ -94,7 +94,7 @@
             </div>
             <!-- Paso 1: Identificar paciente -->
             <div class="step-form" id="step1">
-                <!-- <form id="step1Form" action="guardarDatosConsulta.php" method="post" > -->
+                <!-- <form id="step1Form" action="" method="post" > -->
                     <div class="form-group">
                         <label for="docType">Documento de Identificación</label>
                         <select id="docType" class="form-control">
@@ -153,10 +153,10 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                            <!-- <form action="procesarFormularioRegistro.php" method="post">  -->
+                            <form action="" method="post"> 
                                 <button type="submit" class="btn btn-secondary back-button" >Volver al paso anterior</button>
                                 <button type="button" class="btn btn-primary" onclick="nextStep(3)">Registrar</button>
-                            <!-- </form> -->
+                            </form>
                             </div>
                         <!-- </form> -->
                     </div>
@@ -270,4 +270,4 @@
 
 </body>
 </html>
-<input type="submit" name="Login" value="Login" >
+<!-- <input type="submit" name="Login" value="Login" > -->

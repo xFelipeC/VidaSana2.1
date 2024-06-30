@@ -1,8 +1,6 @@
 <?php
 
-// session_start();
 require_once '../src/bbdd.php';
-
 
 // Obtener datos del formulario
 $tipoDocumento = $_POST['confirmDocType'];
@@ -15,89 +13,141 @@ $direccion = $_POST['confirmDireccion'];
 $telefono = $_POST['confirmTelefono'];
 $afiliacion = $_POST['confirmAfiliacion'];
 $servicio = $_POST['confirmService'];
-$fechaAtencion = $_POST['confirmDate'];
+$fecha = $_POST['confirmDate'];
 $hora = $_POST['confirmTime'];
+$fechaAtencion = $fecha . ' ' . $hora;
 
-if($afiliacion = "Electrocardiograma"){
-    $afiliacion = 1;
-}elseif($afiliacion = "Holter de Presión"){
-    $afiliacion = 2;
-}elseif($afiliacion = "Holter de Ritmo"){
-    $afiliacion = 3;
-}elseif($afiliacion = "Ecocardiograma"){
-    $afiliacion = 4;
-}elseif($afiliacion = "Test de Esfuerzo"){
-    $afiliacion = 5;
-}elseif($afiliacion = "Endoscopia Digestiva Alta"){
-    $afiliacion = 6;
-}else{
-    $afiliacion = 7;
-}
-
-
-
-// echo $confirmApellido;
-// echo "hello world";
-// //pruebas
-//  $sql = "insert into persona values('$rut','$userName','$secondName','$surName','$secondSurName','$number','$email','$password');";
-// // echo $sql;
-
-// // //  if ($password == $cpassword){
-
-// //         $res = $bd->query($sql); //haz la consulta
-
-//         //fin prueba
-
-// Verificar si el paciente ya existe en la base de datos
-$sql_check_patient = "SELECT * FROM pacientes WHERE rut=?";
-$stmt = $con->prepare($sql_check_patient);
-$stmt->bind_param("s", $confirmRUT);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows == 0) {
-    // Insertar nuevo paciente si no existe
-    $sql_insert_patient = "INSERT INTO pacientes (rut, nombre, apellido, fechaNacimiento, nacionalidad, direccion, teléfono, tipo_Afiliación)
-                           VALUES ($rut, $nombre, $apellido, $nacimiento, $nacionalidad, $direccion, $telefono, $afiliacion)";
-    $stmt_insert = $con->prepare($sql_insert_patient);
-    $stmt_insert->bind_param("ssssssss", $confirmRUT, $confirmNombre, $confirmApellido, $confirmFechaNacimiento, $confirmNacionalidad, $confirmDireccion, $confirmTelefono, $confirmAfiliacion);
-
-    if ($stmt_insert->execute()) {
-        echo "Nuevo paciente registrado correctamente.";
-    } else {
-        echo "Error al registrar nuevo paciente: " . $stmt_insert->error;
-    }
-    $stmt_insert->close();
-}
-
-// Obtener ID del profesional basado en el nombre
-$sql_get_professional = "SELECT id_profesional FROM profesionales WHERE nombre=?";
-$stmt_professional = $con->prepare($sql_get_professional);
-$stmt_professional->bind_param("s", $confirmService);
-$stmt_professional->execute();
-$result_professional = $stmt_professional->get_result();
-
-if ($result_professional->num_rows > 0) {
-    $row_professional = $result_professional->fetch_assoc();
-    $id_profesional = $row_professional['id_profesional'];
-
-    // Insertar datos en la tabla citas
-    $fecha_hora = $confirmDate . " " . $confirmTime;
-    $sql_insert_appointment = "INSERT INTO citas (rut_paciente, id_profesional, id_procedimiento, fecha_hora, descuento)
-                               VALUES (?, ?, NULL, ?, 0)";
-    $stmt_appointment = $con->prepare($sql_insert_appointment);
-    $stmt_appointment->bind_param("sis", $confirmRUT, $id_profesional, $fecha_hora);
-
-    if ($stmt_appointment->execute()) {
-        echo "Cita registrada correctamente.";
-    } else {
-        echo "Error al registrar cita: " . $stmt_appointment->error;
-    }
-    $stmt_appointment->close();
+if($servicio == "Electrocardiograma (ECG)"){
+    $servicio = 1;
+} elseif($servicio == "Holter de presión"){
+    $servicio = 2;
+} elseif($servicio == "Holter de Ritmo"){
+    $servicio = 3;
+} elseif($servicio == "Ecocardiograma"){
+    $servicio = 4;
+} elseif($servicio == "Test de esfuerzo"){
+    $servicio = 5;
+} elseif($servicio == "Endoscopia Digestiva Alta"){
+    $servicio = 6;
 } else {
-    echo "Profesional no encontrado.";
+    $servicio = 7;
 }
 
-$stmt_professional->close();
-$con->close();
+// Verificar si el paciente ya existe por su RUT
+$stmt = $con->prepare("SELECT rut FROM pacientes WHERE rut = :rut");
+$stmt->bindParam(':rut', $rut);
+$stmt->execute();
+$paciente_existente = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($paciente_existente) {
+    // Si el paciente ya existe, solo registrar la cita
+    $sql_insert_appointment = "INSERT INTO citas (rut_paciente, id_profesional, id_procedimiento, fecha_hora, descuento)
+                               VALUES ('$rut', 1, $servicio, '$fechaAtencion', 0)";
+    
+    $res2 = $con->query($sql_insert_appointment);
+    
+    // echo "Cita registrada correctamente.";
+    $mensaje_exito = "Cita registrada correctamente.";
+} else {
+    // Si el paciente no existe, registrar primero al paciente y luego la cita
+    $sql_insert_pacient = "INSERT INTO pacientes (rut, nombre, apellido, fechaNacimiento, nacionalidad, direccion, teléfono, tipo_Afiliación)
+                           VALUES ('$rut', '$nombre', '$apellido', '$nacimiento', '$nacionalidad', '$direccion', '$telefono', '$afiliacion')";
+    
+    $sql_insert_appointment = "INSERT INTO citas (rut_paciente, id_profesional, id_procedimiento, fecha_hora, descuento)
+                               VALUES ('$rut', 1, $servicio, '$fechaAtencion', 0)";
+    
+    $res1 = $con->query($sql_insert_pacient);
+    $res2 = $con->query($sql_insert_appointment);
+    
+    $mensaje_exito = "Cita registrada correctamente.";
+    // echo "Paciente y cita registrados correctamente.";
+}
+
+// Liberar recursos
+$con = null;
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Sana</title>
+    <link rel="shortcut icon" href="../img/logo4.webp" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.php"><img src="../img/logo4.webp" alt="Vida Sana Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="src/quienessomos.php">Quienes Somos</a></li>
+                <li><a href="src/ConsultasMedicas.php">Consultas Médicas</a></li>
+                <li><a href="src/contacto.php">Contacto</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
+                <button onclick="location.href='src/login.php'">Iniciar Sesión</button>
+                <button onclick="location.href='src/ConsultaCita.php'">Consultar Cita</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <br><br><br>
+        <section class="hero">
+            <div class="alert alert-success" role="alert">
+                <?php echo $mensaje_exito; ?>
+            </div>
+        </section>
+        <br><br><br>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos una empresa dedicada a ofrecer servicios de salud de calidad. Nuestro objetivo es mejorar la vida de nuestros clientes con un enfoque integral y personalizado.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+                <p>Teléfono: (123) 456-7890</p>
+                <p>Email: info@vidasana.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+            &copy; 2024 VidaSana. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="js/nose.js"></script>
+</body>
+</html>
