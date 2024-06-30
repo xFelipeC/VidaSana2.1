@@ -90,10 +90,10 @@ $con = null;
                 <a href="index.php"><img src="../img/logo4.webp" alt="Vida Sana Logo"></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="src/quienessomos.php">Quienes Somos</a></li>
-                <li><a href="src/ConsultasMedicas.php">Consultas Médicas</a></li>
-                <li><a href="src/contacto.php">Contacto</a></li>
+                <li><a href="../index.php">Inicio</a></li>
+                <li><a href="quienessomos.php">Quienes Somos</a></li>
+                <li><a href="ConsultasMedicas.php">Consultas Médicas</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
                 <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
