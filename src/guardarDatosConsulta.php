@@ -59,7 +59,7 @@ if ($paciente_existente) {
     $res1 = $con->query($sql_insert_pacient);
     $res2 = $con->query($sql_insert_appointment);
     
-    $mensaje_exito = "Cita registrada correctamente.";
+    $mensaje_exito = "Paciente y cita registrados correctamente.";
     // echo "Paciente y cita registrados correctamente.";
 }
 

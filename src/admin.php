@@ -34,6 +34,10 @@
                 <li><a href="ConsultasMedicas.php">Consultas Médicas</a></li>
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
+            <div class="nav-buttons">
+                <button onclick="location.href='login.php'">Cerrar Sesión</button>
+                <button onclick="location.href='ConsultaCita.php'">Consultar Cita</button>
+            </div>
         </nav>
     </header>
     <main>
@@ -56,4 +60,10 @@
         </section>
     </main>
 </body>
+    <br>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">&copy; 2024 VidaSana. Todos los derechos reservados.</span>
+        </div>
+    </footer>
 </html>

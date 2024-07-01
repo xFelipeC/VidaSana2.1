@@ -20,9 +20,13 @@
                 <li><a href="ConsultasMedicas.php">Consultas Médicas</a></li>
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
+            <div class="nav-buttons">
+                <button onclick="location.href='login.php'">Iniciar Sesión</button>
+                <button onclick="location.href='ConsultaCita.php'">Consultar Cita</button>
+            </div>
         </nav>
     </header>
-    <main>
+    <main class="consultaRut">
         <section class="about-us">
             <div class="container mt-5">
                 <h1>Vida Sana</h1>
@@ -37,7 +41,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
                     </form>
-                    <img src="../img/carruzel3.jpg" alt="">
+                    <!-- <img src="../img/carruzel3.jpg" alt=""> -->
                 </div>
             </div>
         </section>

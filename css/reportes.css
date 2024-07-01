@@ -1,0 +1,25 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container a {
+    text-decoration: none;
+    padding-inline: 20px;
+}
+
+.button-container button {
+    background-color: #007bff; /* Color azul de Bootstrap por defecto */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #027a0c; /* Color azul más oscuro al pasar el mouse */
+}
