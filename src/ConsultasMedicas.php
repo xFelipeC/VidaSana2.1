@@ -96,21 +96,21 @@
             <!-- Paso 1: Identificar paciente -->
             <div class="step-form" id="step1">
                 <!-- <form id="step1Form" action="" method="post" > -->
-                <div class="form-group">
-                    <label for="docType">Documento de Identificación</label>
-                    <select id="docType" class="form-control" onchange="actualizarCampoIdentificacion()">
-                        <option value="carnet">Carnet de Identidad</option>
-                        <option value="passport">Pasaporte</option>
-                    </select>
-                </div>
-                <!-- <form action="ConsultasMedicas.php" method="post"> -->
-                <div class="form-group">
-                    <label for="rut" id="labelIdentificacion">RUT del Paciente (Con puntos y guion)</label>
-                    <input type="text" id="rut" class="form-control" placeholder="Ej: 11.222.333-4">
-                    <small id="rutHelp" class="form-text text-muted">Ingrese RUT del paciente</small>
-                </div>
-                <!-- </form> -->
-                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
+                    <div class="form-group">
+                        <label for="docType">Documento de Identificación</label>
+                        <select id="docType" class="form-control">
+                            <option value="carnet">Carnet de Identidad</option>
+                            <option value="passport">Pasaporte</option>
+                        </select>
+                    </div>
+                    <!-- <form action="ConsultasMedicas.php" method="post"> -->
+                    <div class="form-group">
+                        <label for="rut">RUT del Paciente (Con puntos y guion)</label>
+                        <input type="text" id="rut" class="form-control" placeholder="Ej: 11.222.333-4">
+                        <small id="rutHelp" class="form-text text-muted">Ingrese RUT del paciente</small>
+                    </div>
+                    <!-- </form> -->
+                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
                 <!-- </form> -->
             </div>
 
@@ -123,258 +123,197 @@
                             <h3 class="card-title">Registrate</h3>
                         </div>
                         <!-- <form id="step2Form"> -->
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php $nombre ?>" placeholder="Ingrese su nombre" required>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php $nombre ?>" placeholder="Ingrese su nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nacionalidad">Nacionalidad</label>
+                                    <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Ingrese su nacionalidad" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="afiliacion">Tipo de Afiliación</label>
+                                    <select class="form-control" id="afiliacion" name="afiliacion" required>
+                                        <option value="fonasa">FONASA</option>
+                                        <option value="isapre">ISAPRE</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="apellido">Apellido</label>
-                                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nacionalidad">Nacionalidad</label>
-                                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Ingrese su nacionalidad" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="direccion">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono">Teléfono</label>
-                                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="afiliacion">Tipo de Afiliación</label>
-                                <select class="form-control" id="afiliacion" name="afiliacion" required>
-                                    <option value="fonasa">FONASA</option>
-                                    <option value="isapre">ISAPRE</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <form action="" method="post">
-                                <button type="submit" class="btn btn-secondary back-button">Volver al paso anterior</button>
+                            <div class="card-footer">
+                            <form action="" method="post"> 
+                                <button type="submit" class="btn btn-secondary back-button" >Volver al paso anterior</button>
                                 <button type="button" class="btn btn-primary" onclick="nextStep(3)">Registrar</button>
                             </form>
-                        </div>
+                            </div>
                         <!-- </form> -->
                     </div>
                 </div>
             </div>
             <!-- Paso 3: Seleccionar servicio -->
             <!-- <form id="step3Form"> -->
-            <div class="step-form" id="step3" style="display:none;">
+                <div class="step-form" id="step3" style="display:none;">
                 <h2 class="step-subtitle">Paso 3: Seleccionar servicio</h2>
                 <h3 class="service-title">Nuestros Servicios</h3>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 service-card">
-                            <div class="card">
-                                <img src="../img/general.jpg" class="card-img-top" alt="Medicina General">
-                                <div class="card-body">
-                                    <h5 class="card-title">Medicina General</h5>
-                                    <p class="card-text">Consulta de medicina general para diagnóstico y tratamiento de enfermedades comunes.</p>
-                                    <button class="btn btn-info" onclick="selectService('Medicina General')">Seleccionar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 service-card">
-                            <div class="card">
-                                <img src="../img/pediatria.jpg" class="card-img-top" alt="Pediatría">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pediatría</h5>
-                                    <p class="card-text">Consulta especializada para el cuidado de la salud de los niños.</p>
-                                    <button class="btn btn-info" onclick="selectService('Pediatría')">Seleccionar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 service-card">
-                            <div class="card">
-                                <img src="../img/ginecologia.jpg" class="card-img-top" alt="Ginecología">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ginecología</h5>
-                                    <p class="card-text">Consulta especializada en salud reproductiva y bienestar femenino.</p>
-                                    <button class="btn btn-info" onclick="selectService('Ginecología')">Seleccionar</button>
-                                </div>
-                            </div>
-                        </div>
+                <div class="service-selection">
+                    <div class="service-option" onclick="selectService('Electrocardiograma (ECG)'); nextStep(4);">
+                        <i class="fas fa-heartbeat"></i>
+                        <p>Electrocardiograma (ECG)</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4 service-card">
-                            <div class="card">
-                                <img src="../img/dermatologia.jpg" class="card-img-top" alt="Dermatología">
-                                <div class="card-body">
-                                    <h5 class="card-title">Dermatología</h5>
-                                    <p class="card-text">Consulta especializada en el cuidado de la piel y tratamiento de enfermedades cutáneas.</p>
-                                    <button class="btn btn-info" onclick="selectService('Dermatología')">Seleccionar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 service-card">
-                            <div class="card">
-                                <img src="../img/odontologia.jpg" class="card-img-top" alt="Odontología">
-                                <div class="card-body">
-                                    <h5 class="card-title">Odontología</h5>
-                                    <p class="card-text">Consulta especializada en salud bucal y cuidado dental.</p>
-                                    <button class="btn btn-info" onclick="selectService('Odontología')">Seleccionar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 service-card">
-                            <div class="card">
-                                <img src="../img/cardiologia.jpg" class="card-img-top" alt="Cardiología">
-                                <div class="card-body">
-                                    <h5 class="card-title">Cardiología</h5>
-                                    <p class="card-text">Consulta especializada en el diagnóstico y tratamiento de enfermedades del corazón.</p>
-                                    <button class="btn btn-info" onclick="selectService('Cardiología')">Seleccionar</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="service-option" onclick="selectService('Holter de presión'); nextStep(4);">
+                        <i class="fas fa-stethoscope"></i>
+                        <p>Holter de presión</p>
+                    </div>
+                    <div class="service-option" onclick="selectService('Holter de Ritmo'); nextStep(4);">
+                        <i class="fas fa-pulse"></i>
+                        <p>Holter de Ritmo</p>
+                    </div>
+                    <div class="service-option" onclick="selectService('Ecocardiograma'); nextStep(4);">
+                        <i class="fas fa-heart"></i>
+                        <p>Ecocardiograma</p>
+                    </div>
+                    <div class="service-option" onclick="selectService('Test de esfuerzo'); nextStep(4);">
+                        <i class="fas fa-running"></i>
+                        <p>Test de esfuerzo</p>
+                    </div>
+                    <div class="service-option" onclick="selectService('Endoscopia Digestiva Alta'); nextStep(4);">
+                        <i class="fas fa-procedures"></i>
+                        <p>Endoscopia Digestiva Alta</p>
+                    </div>
+                    <div class="service-option" onclick="selectService('Endoscopia Digestiva Baja (Colonoscopia)'); nextStep(4);">
+                        <i class="fas fa-procedures"></i>
+                        <p>Endoscopia Digestiva Baja (Colonoscopia)</p>
                     </div>
                 </div>
-                <button class="btn btn-secondary back-button" onclick="previousStep(2)">Volver al paso anterior</button>
+                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(2)">Volver al paso anterior</button>
             </div>
             <!-- </form> -->
-            <!-- Paso 4: Seleccionar fecha y hora -->
+            <!-- Paso 4: Calendario -->
             <div class="step-form" id="step4" style="display:none;">
-                <h2 class="step-subtitle">Paso 4: Seleccionar fecha y hora</h2>
+                <h2 class="step-subtitle">Paso 4: Seleccionar día y hora</h2>
                 <div id='calendar'></div>
-                <div id="selectedDate"></div>
-                <div id="timeSlots"></div>
-                <button class="btn btn-secondary back-button" onclick="previousStep(3)">Volver al paso anterior</button>
+                <div id="horasDisponibles"></div>
+                <input type="hidden" id="selectedDate">
+                <input type="hidden" id="selectedTime">
+                <button type="button" class="btn btn-secondary back-button" onclick="prevStep(3)">Volver al paso anterior</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(5)">Continuar</button>
             </div>
-            <!-- Paso 5: Confirmación -->
-            <div class="step-form" id="step5" style="display:none;">
-                <h2 class="step-subtitle">Paso 5: Confirmación</h2>
-                <div class="container">
-                    <div class="card hora-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Confirmación de Cita</h5>
-                            <p class="card-text"><strong>Paciente:</strong> <span id="confirmacionPaciente"></span></p>
-                            <p class="card-text"><strong>Servicio:</strong> <span id="confirmacionServicio"></span></p>
-                            <p class="card-text"><strong>Fecha:</strong> <span id="confirmacionFecha"></span></p>
-                            <p class="card-text"><strong>Hora:</strong> <span id="confirmacionHora"></span></p>
-                        </div>
+            <!-- Paso 5: Confirmar detalles -->
+            
+                <div class="step-form" id="step5" style="display:none;">
+                    <h2 class="step-subtitle">Paso 5: Confirmar detalles</h2>
+                    <div class="confirmation-details">
+                    <!-- <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre"> -->
+                    <p><strong>Documento de Identificación:</strong> <span id="confirmDocType"></span></p>
+                    <p><strong>RUT del Paciente:</strong> <span id="confirmRUT"></span></p>
+                    <p><strong>Nombre:</strong> <span id="confirmNombre"></span></p>
+                    <p><strong>Apellido:</strong> <span id="confirmApellido"></span></p>
+                    <p><strong>Fecha de Nacimiento:</strong> <span id="confirmFechaNacimiento"></span></p>
+                    <p><strong>Nacionalidad:</strong> <span id="confirmNacionalidad"></span></p>
+                    <p><strong>Dirección:</strong> <span id="confirmDireccion"></span></p>
+                    <p><strong>Teléfono:</strong> <span id="confirmTelefono"></span></p>
+                    <p><strong>Tipo de Afiliación:</strong> <span id="confirmAfiliacion"></span></p>
+                    <p><strong>Servicio Seleccionado:</strong> <span id="confirmService"></span></p>
+                    <p><strong>Fecha:</strong> <span id="confirmDate"></span></p>
+                    <p><strong>Hora:</strong> <span id="confirmTime"></span></p>
+                    <!-- <input type="hidden" id="confirmDocType" name="confirmDocType">
+                    <input type="hidden" id="confirmRUT" name="confirmRUT">
+                    <input type="hidden" id="confirmNombre" name="confirmNombre">
+                    <input type="text" id="confirmApellido" name="confirmApellido">
+                    <input type="hidden" id="confirmFechaNacimiento" name="confirmFechaNacimiento">
+                    <input type="hidden" id="confirmNacionalidad" name="confirmNacionalidad">
+                    <input type="hidden" id="confirmDireccion" name="confirmDireccion">
+                    <input type="hidden" id="confirmTelefono" name="confirmTelefono">
+                    <input type="hidden" id="confirmAfiliacion" name="confirmAfiliacion">
+                    <input type="hidden" id="confirmService" name="confirmService">
+                    <input type="hidden" id="confirmDate" name="confirmDate">
+                    <input type="hidden" id="confirmTime" name="confirmTime"> -->
+                    <form role="form "id="step5Form" action="guardarDatosConsulta.php" method="post" onsubmit="copiarValoresASpan();">
+                    <input type="hidden" id="inputDocType" name="confirmDocType">
+                    <input type="hidden" id="inputRUT" name="confirmRUT">
+                    <input type="hidden" id="inputNombre" name="confirmNombre">
+                    <input type="hidden" id="inputApellido" name="confirmApellido">
+                    <input type="hidden" id="inputFechaNacimiento" name="confirmFechaNacimiento">
+                    <input type="hidden" id="inputNacionalidad" name="confirmNacionalidad">
+                    <input type="hidden" id="inputDireccion" name="confirmDireccion">
+                    <input type="hidden" id="inputTelefono" name="confirmTelefono">
+                    <input type="hidden" id="inputAfiliacion" name="confirmAfiliacion">
+                    <input type="hidden" id="inputService" name="confirmService">
+                    <input type="hidden" id="inputDate" name="confirmDate">
+                    <input type="hidden" id="inputTime" name="confirmTime">
+
+                    <!-- <input type="time" name="" id="">
+                    <input type="date" name="" id=""> -->
                     </div>
+                    <!-- <button type="button" class="btn btn-primary" onclick="submitForm()">Confirmar y Continuar</button>
+                    <button type="button" class="btn btn-secondary back-button" onclick="prevStep(4)">Volver al paso anterior</button> -->
+                    <input type="submit" class="btn btn-primary" value="Confirmar y Continuar">
+                    <input type="Button" class="btn btn-secondary back-button" onclick="prevStep(4)" value="Volver al paso anterior">
                 </div>
-                <button class="btn btn-primary" onclick="confirmBooking()">Confirmar</button>
-                <button class="btn btn-secondary back-button" onclick="previousStep(4)">Volver al paso anterior</button>
-            </div>
+                
+            </form>
         </section>
     </main>
+    
+    <script src="../js/consultas.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                selectable: true,
-                dateClick: function(info) {
-                    var selectedDate = info.dateStr;
-                    document.getElementById('selectedDate').innerHTML = "Fecha seleccionada: " + selectedDate;
-                    showTimeSlots(selectedDate);
-                }
-            });
-            calendar.render();
-        });
-
-       
         function actualizarCampoIdentificacion() {
-    const docType = document.getElementById('docType').value;
-    const labelIdentificacion = document.getElementById('labelIdentificacion');
-    const rutInput = document.getElementById('rut');
-    const rutHelp = document.getElementById('rutHelp');
-
-    if (docType === 'carnet') {
-        labelIdentificacion.textContent = 'RUT del Paciente (Con puntos y guion)';
-        rutHelp.textContent = 'Ingrese RUT del paciente';
-        rutInput.placeholder = 'Ej: 11.222.333-4';
-    } else if (docType === 'passport') {
-        labelIdentificacion.textContent = 'Pasaporte del Paciente';
-        rutHelp.textContent = 'Ingrese el número de pasaporte';
-        rutInput.placeholder = 'Ej: 123456789';
-    }
-}
-
-        function showTimeSlots(selectedDate) {
-            var timeSlotsContainer = document.getElementById('timeSlots');
-            timeSlotsContainer.innerHTML = ""; // Clear previous time slots
-
-            var availableSlots = [
-                "09:00 - 09:30",
-                "10:00 - 10:30",
-                "11:00 - 11:30",
-                "14:00 - 14:30",
-                "15:00 - 15:30"
-            ];
-
-            availableSlots.forEach(function(slot) {
-                var slotButton = document.createElement('button');
-                slotButton.className = 'hora-button';
-                slotButton.innerText = slot;
-                slotButton.onclick = function() {
-                    selectTimeSlot(slot);
-                };
-                timeSlotsContainer.appendChild(slotButton);
-            });
-        }
-
-        function selectTimeSlot(slot) {
-            var confirmation = confirm("¿Confirmar hora " + slot + "?");
-            if (confirmation) {
-                document.getElementById('confirmacionHora').innerText = slot;
-                nextStep(5); // Ir a la página de confirmación
+            const docType = document.getElementById('docType').value;
+            const labelIdentificacion = document.getElementById('labelIdentificacion');
+            const rutHelp = document.getElementById('rutHelp');
+            
+            if (docType === 'passport') {
+                labelIdentificacion.textContent = 'Pasaporte del Paciente';
+                rutHelp.textContent = 'Ingrese el número de pasaporte del paciente';
+                document.getElementById('rut').placeholder = 'Ej: 123456789';
+            } else {
+                labelIdentificacion.textContent = 'RUT del Paciente (Con puntos y guion)';
+                rutHelp.textContent = 'Ingrese RUT del paciente';
+                document.getElementById('rut').placeholder = 'Ej: 11.222.333-4';
             }
         }
 
-        function nextStep(step) {
-            var currentStep = step - 1;
-            var currentStepForm = document.getElementById('step' + currentStep);
-            var nextStepForm = document.getElementById('step' + step);
-
-            currentStepForm.style.display = 'none';
-            nextStepForm.style.display = 'block';
-
-            document.getElementById('stepIndicator' + currentStep).classList.remove('active');
-            document.getElementById('stepIndicator' + step).classList.add('active');
+        function nextStep(stepNumber) {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(step${i}).style.display = i === stepNumber ? 'block' : 'none';
+                document.getElementById(stepIndicator${i}).classList.toggle('active', i === stepNumber);
+            }
         }
 
-        function previousStep(step) {
-            var currentStep = step + 1;
-            var currentStepForm = document.getElementById('step' + currentStep);
-            var previousStepForm = document.getElementById('step' + step);
-
-            currentStepForm.style.display = 'none';
-            previousStepForm.style.display = 'block';
-
-            document.getElementById('stepIndicator' + currentStep).classList.remove('active');
-            document.getElementById('stepIndicator' + step).classList.add('active');
+        function prevStep(stepNumber) {
+            nextStep(stepNumber);
         }
 
         function selectService(service) {
-            document.getElementById('confirmacionServicio').innerText = service;
-            nextStep(4);
+            document.getElementById('confirmService').textContent = service;
         }
 
-        function confirmBooking() {
-            var paciente = document.getElementById('nombre').value + ' ' + document.getElementById('apellido').value;
-            var servicio = document.getElementById('confirmacionServicio').innerText;
-            var fecha = document.getElementById('selectedDate').innerText.split(': ')[1];
-            var hora = document.getElementById('confirmacionHora').innerText;
+        function selectDoctor(doctor) {
+            document.getElementById('confirmDoctor').textContent = doctor;
+        }
 
-            document.getElementById('confirmacionPaciente').innerText = paciente;
-            document.getElementById('confirmacionServicio').innerText = servicio;
-            document.getElementById('confirmacionFecha').innerText = fecha;
-            document.getElementById('confirmacionHora').innerText = hora;
-
-            alert("Cita confirmada para " + paciente + " en el servicio de " + servicio + " el " + fecha + " a las " + hora);
-            // Aquí se puede enviar la información al servidor para guardar la cita
+        function submitReservation() {
+            alert('Reserva confirmada.');
+            // Aquí puedes agregar la lógica para enviar la reserva al servidor
         }
     </script>
-</body>
 
+</body>
 </html>
+<!-- <input type="submit" name="Login" value="Login" > -->
