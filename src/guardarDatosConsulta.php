@@ -80,7 +80,7 @@ if ($paciente_existente) {
                            VALUES ('$rut', '$nombre', '$apellido', '$nacimiento', '$nacionalidad', '$direccion', '$telefono', '$afiliacion')";
     
     $sql_insert_appointment = "INSERT INTO citas (rut_paciente, id_profesional, id_procedimiento, fecha_hora, descuento)
-                               VALUES ('$rut', 1, $servicio, '$fechaAtencion', 0)";
+                               VALUES ('$rut', 1, $servicio, '$fechaAtencion', $descuento)";
     
     $res1 = $con->query($sql_insert_pacient);
     $res2 = $con->query($sql_insert_appointment);
