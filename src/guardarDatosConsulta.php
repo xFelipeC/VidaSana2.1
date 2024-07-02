@@ -26,12 +26,12 @@ $edad = $fechaActual->diff($fechaNacimiento)->y;
 
 // echo "Edad: $edad años";
 
-if($edad >=65 && $servicio="fonasa"){
+if($edad >=65 && $afiliacion=="fonasa"){
     $descuento = 0.20;
     $mDescuento = "Enorabuena! Usted por pertenecer a la 3era Edad y pertenecer a fonasa se ha ganado un descuento del 20%
                     del total a pagar, se le descontara al momento de pagar en caja el dia de su hora
                     en la clinica, no olvide llevar carnet de identidad";
-}elseif($edad >=65 && $servicio="isapre"){
+}elseif($edad >=65 && $afiliacion=="isapre"){
     $descuento = 0.10;
     $mDescuento = "Enorabuena! Usted por pertenecer a la 3era Edad y pertenecer a isapre se ha ganado un descuento del 10%
                     del total a pagar, se le descontara al momento de pagar en caja el dia de su hora
