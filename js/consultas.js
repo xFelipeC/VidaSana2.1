@@ -290,8 +290,8 @@ function mostrarHorasDisponibles(fecha) {
         <div class="doctor-info">
             <img src="../img/doctorVidaSana1.png" alt="Doctor" style="width: 80px; height: auto;">
             <div class="doctor-details">
-                <p>Javier Fernández</p>
-                <p>Traumatología Adulto</p>
+                <p>Edward Jenner</p>
+                <p>Doctor General</p>
             </div>
         </div>
         <div class="horas">

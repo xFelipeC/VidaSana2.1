@@ -17,6 +17,32 @@ $fecha = $_POST['confirmDate'];
 $hora = $_POST['confirmTime'];
 $fechaAtencion = $fecha . ' ' . $hora;
 
+// Crear objetos DateTime para la fecha de nacimiento y la fecha actual
+$fechaNacimiento = new DateTime($nacimiento);
+$fechaActual = new DateTime();
+
+// Calcular la diferencia en años entre la fecha de nacimiento y la fecha actual
+$edad = $fechaActual->diff($fechaNacimiento)->y;
+
+// echo "Edad: $edad años";
+
+if($edad >=65 && $servicio="fonasa"){
+    $descuento = 0.20;
+    $mDescuento = "Enorabuena! Usted por pertenecer a la 3era Edad y pertenecer a fonasa se ha ganado un descuento del 20%
+                    del total a pagar, se le descontara al momento de pagar en caja el dia de su hora
+                    en la clinica, no olvide llevar carnet de identidad";
+}elseif($edad >=65 && $servicio="isapre"){
+    $descuento = 0.10;
+    $mDescuento = "Enorabuena! Usted por pertenecer a la 3era Edad y pertenecer a isapre se ha ganado un descuento del 10%
+                    del total a pagar, se le descontara al momento de pagar en caja el dia de su hora
+                    en la clinica, no olvide llevar carnet de identidad";
+
+}
+else{
+    $descuento = 0;
+    $mDescuento = "";
+}
+
 if($servicio == "Electrocardiograma (ECG)"){
     $servicio = 1;
 } elseif($servicio == "Holter de presión"){
@@ -42,7 +68,7 @@ $paciente_existente = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($paciente_existente) {
     // Si el paciente ya existe, solo registrar la cita
     $sql_insert_appointment = "INSERT INTO citas (rut_paciente, id_profesional, id_procedimiento, fecha_hora, descuento)
-                               VALUES ('$rut', 1, $servicio, '$fechaAtencion', 0)";
+                               VALUES ('$rut', 1, $servicio, '$fechaAtencion', '$descuento')";
     
     $res2 = $con->query($sql_insert_appointment);
     
@@ -96,9 +122,9 @@ $con = null;
                 <li><a href="contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
-                <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button>
-                <button onclick="location.href='src/login.php'">Iniciar Sesión</button>
-                <button onclick="location.href='src/ConsultaCita.php'">Consultar Cita</button>
+                <!-- <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button> -->
+                <button onclick="location.href='login.php'">Iniciar Sesión</button>
+                <button onclick="location.href='ConsultaCita.php'">Consultar Cita</button>
             </div>
         </nav>
     </header>
@@ -107,6 +133,8 @@ $con = null;
         <section class="hero">
             <div class="alert alert-success" role="alert">
                 <?php echo $mensaje_exito; ?>
+                <hr>
+                <?php echo $mDescuento; ?>
             </div>
         </section>
         <br><br><br>

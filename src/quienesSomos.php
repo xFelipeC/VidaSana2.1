@@ -56,5 +56,41 @@
             </div>
         </section>
     </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos una empresa dedicada a ofrecer servicios de salud de calidad. Nuestro objetivo es mejorar la vida de nuestros clientes con un enfoque integral y personalizado.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+                <p>Teléfono: (123) 456-7890</p>
+                <p>Email: info@vidasana.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-bottom">
+            &copy; 2024 VidaSana. Todos los derechos reservados.
+        </div>
+    </footer>
 </body>
 </html>
