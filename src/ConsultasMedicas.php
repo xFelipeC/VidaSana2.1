@@ -102,14 +102,17 @@
                             <option value="passport">Pasaporte</option>
                         </select>
                     </div>
+                    <!-- <form action="ConsultasMedicas.php" method="post"> -->
                     <div class="form-group">
                         <label for="rut">RUT del Paciente (Con puntos y guion)</label>
                         <input type="text" id="rut" class="form-control" placeholder="Ej: 11.222.333-4">
                         <small id="rutHelp" class="form-text text-muted">Ingrese RUT del paciente</small>
                     </div>
+                    <!-- </form> -->
                     <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continuar</button>
                 <!-- </form> -->
             </div>
+
             <!-- Paso 2: Formulario de Registro -->
             <div class="step-form" id="step2" style="display:none;">
                 <h2 class="step-subtitle">Paso 2: Registrarse</h2>
@@ -122,7 +125,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php $nombre ?>" placeholder="Ingrese su nombre" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido">Apellido</label>
