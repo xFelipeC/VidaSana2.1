@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -27,7 +25,6 @@
                 <li><a href="src/contacto.php">Contacto</a></li>
             </ul>
             <div class="nav-buttons">
-                <!-- <button onclick="location.href='src/FormularioRegistrarse.php'">Registrarse</button> -->
                 <button onclick="location.href='src/login.php'">Iniciar Sesión</button>
                 <button onclick="location.href='src/ConsultaCita.php'">Consultar Cita</button>
             </div>
@@ -63,36 +60,50 @@
                 </button>
             </div>
             <p style="color: #00796b;">En <span class="highlight">Vida Sana</span>, ofrecemos servicios asociados a atención médica, imagenología, laboratorio y procedimientos</p>
-            <div class="services">
-                <div class="service">
-                    <i class="fas fa-heartbeat"></i>
-                    <h3 style="color: #00796b;">Electrocardiograma (ECG)</h3>
-                    <a href="src/Electrocardiograma.php">+</a>
-                </div>
-                <div class="service">
-                    <i class="fas fa-stethoscope"></i>
-                    <h3 style="color: #00796b;">Holter de presión</h3>
-                    <a href="src/Holterdepresion.php">+</a>
-                </div>
-                <div class="service">
-                    <i class="fas fa-procedures"></i>
-                    <h3 style="color: #00796b;">Holter de Ritmo</h3>
-                    <a href="src/HolterdeRitmo.php">+</a>
-                </div>
-                <div class="service">
-                    <i class="fas fa-heart"></i>
-                    <h3 style="color: #00796b;">Ecocardiograma</h3>
-                    <a href="src/Ecocardiograma.php">+</a>
-                </div>
-                <div class="service">
-                    <i class="fas fa-running"></i>
-                    <h3 style="color: #00796b;">Test de esfuerzo</h3>
-                    <a href="src/Testdeesfuerzo.php">+</a>
-                </div>
-                <div class="service">
-                    <i class="fas fa-x-ray"></i>
-                    <h3 style="color: #00796b;">Endoscopia Digestiva Alta/Baja</h3>
-                    <a href="src/EndoscopiaDigestiva.php">+</a>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="service">
+                            <i class="fas fa-heartbeat"></i>
+                            <h3 style="color: #00796b;">Electrocardiograma (ECG)</h3>
+                            <a href="src/Electrocardiograma.php">+</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="service">
+                            <i class="fas fa-stethoscope"></i>
+                            <h3 style="color: #00796b;">Holter de presión</h3>
+                            <a href="src/Holterdepresion.php">+</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="service">
+                            <i class="fas fa-procedures"></i>
+                            <h3 style="color: #00796b;">Holter de Ritmo</h3>
+                            <a href="src/HolterdeRitmo.php">+</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="service">
+                            <i class="fas fa-heart"></i>
+                            <h3 style="color: #00796b;">Ecocardiograma</h3>
+                            <a href="src/Ecocardiograma.php">+</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="service">
+                            <i class="fas fa-running"></i>
+                            <h3 style="color: #00796b;">Test de esfuerzo</h3>
+                            <a href="src/Testdeesfuerzo.php">+</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="service">
+                            <i class="fas fa-x-ray"></i>
+                            <h3 style="color: #00796b;">Endoscopia Digestiva Alta/Baja</h3>
+                            <a href="src/EndoscopiaDigestiva.php">+</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

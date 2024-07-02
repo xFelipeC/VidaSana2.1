@@ -521,3 +521,48 @@ footer .footer-bottom {
     padding: 80px 0;
 } */
 
+/* Estilos para las tarjetas de servicio */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #00796b;
+    border-color: #00796b;
+}
+
+.btn-primary:hover {
+    background-color: #005f54;
+    border-color: #005f54;
+}
+
+/* Ajustes adicionales */
+.hero .highlight {
+    color: #00796b;
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
